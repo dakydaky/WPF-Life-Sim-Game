@@ -18,6 +18,7 @@ namespace WpfApp1
     public partial class FamilyWindow : Window
     {
         List<Person> people = new List<Person>();
+        private ProfileWindow profileWindow = null;
         public FamilyWindow(List<Person> sent)
         {
             InitializeComponent();
@@ -44,16 +45,34 @@ namespace WpfApp1
                 Button btn = new Button
                 {
                     Name = person.name,
+                    Tag = person.id.ToString(),
                     Content = roles + person.name + " " + person.surname + ", age " + person.age,
                     Height = 152,
                 };
-                btn.Click += btnMember_Click;
+                btn.Click += (sender, EventArgs) => { btnMember_Click(sender, EventArgs, btn.Tag.ToString()); };
 
                 familyList.Children.Add(btn);
             }
         }
-        private void btnMember_Click(object sender, RoutedEventArgs e)
+        private void btnMember_Click(object sender, RoutedEventArgs e, string id)
         {
+            if(profileWindow == null)
+            {
+                foreach (Person per in people)
+                {
+                    //writes down all the persons roles
+                    if (per.id == int.Parse(id))
+                    {
+                        profileWindow = new ProfileWindow(per);
+                        profileWindow.Closed += ProfileWindowClosed;
+                        profileWindow.ShowDialog();
+                    }
+                }
+            }
+        }
+        public void ProfileWindowClosed(object sender, System.EventArgs e)
+        {
+            profileWindow = null;
         }
     }
 }

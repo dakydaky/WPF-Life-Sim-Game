@@ -22,6 +22,9 @@ namespace WpfApp1
             InitializeComponent();
             WindowStartupLocation = WindowStartupLocation.CenterOwner;
             Owner = Application.Current.MainWindow;
+            this.Title = "Profile (" + sent.name + " " + sent.surname + ")"  ;
+            ageLabel.Content = sent.age;
+            nameLabel.Content = sent.name + " " + sent.surname;
         }
     }
 }

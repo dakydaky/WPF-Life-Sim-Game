@@ -6,8 +6,17 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="ProfileWindow" Height="400" Width="500">
+        Title="Profile" Height="400" Width="500">
     <Grid>
-        
+        <DockPanel Margin="10" Name="pnlMain">
+            <DockPanel.Resources>
+            </DockPanel.Resources>
+            <DockPanel DockPanel.Dock="Top">
+                <Label Content="Name:" />
+                <Label Name="nameLabel" Content="" />
+                <Label Content="Age:" />
+                <Label Name="ageLabel" Content="" />
+            </DockPanel>
+        </DockPanel>
     </Grid>
 </Window>

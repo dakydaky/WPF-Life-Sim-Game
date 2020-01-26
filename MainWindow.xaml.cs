@@ -132,6 +132,7 @@ namespace WpfApp1
             {
                 lbResult.Items.Insert(0, "You have been born a baby girl in U.S.A. Your parents decided to name you " + player.name + ".");
             }
+            this.Title = "TinyLife Alpha 0.006 - " + player.name + " " + player.surname;
         }
         public void age()
         {
@@ -265,6 +266,7 @@ namespace WpfApp1
         {
             switch(type)
             {
+                //search for a specific person by role
                 case "role":
                     foreach (Person per in people)
                     {
@@ -275,6 +277,17 @@ namespace WpfApp1
                             {
                                 return per;
                             }
+                        }
+                    }
+                    break;
+                //search for a specific person by id
+                case "id":
+                    foreach (Person per in people)
+                    {
+                        //writes down all the persons roles
+                        if (per.id == int.Parse(arg1))
+                        {
+                                return per;
                         }
                     }
                     break;
